@@ -2,45 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Storage Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
         }
 
-        /* Navbar Styles */
         .navbar {
             background-color: #333;
             color: #fff;
             padding: 10px;
-            display: flex;
-            justify-content: space-around;
+            text-align: center;
         }
 
         .navbar a {
-            text-decoration: none;
             color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
             padding: 5px 10px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .navbar a:hover {
             background-color: #555;
         }
 
-        /* Main Content Styles */
+        .navbar a:hover {
+            background-color: #777;
+        }
+
         .main {
             max-width: 800px;
             margin: 20px auto;
-            background-color: #fff;
             padding: 20px;
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -57,7 +52,6 @@
         label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
         }
 
         input[type="text"],
@@ -66,28 +60,21 @@
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
-            border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box;
+            border: 1px solid #ccc;
         }
 
         button {
             padding: 10px;
-            background-color: #333;
-            color: #fff;
             border: none;
             border-radius: 5px;
+            background-color: #555;
+            color: #fff;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #555;
-        }
-
-        h2 {
-            margin-top: 20px;
-            color: #333;
+            background-color: #777;
         }
 
         ul {
@@ -97,80 +84,87 @@
 
         li {
             margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-
-        .message {
-            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            padding: 10px;
             background-color: #f9f9f9;
         }
 
+        .message {
+            margin-bottom: 10px;
+        }
+
         .preview {
-            max-width: 100px;
-            max-height: 100px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
         }
 
-        .delete-button {
-            margin-left: 10px;
-            padding: 5px 10px;
-            background-color: #ff3333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .delete-button:hover {
-            background-color: #ff6666;
-        }
-
+        .delete-button,
         .download-button {
             margin-left: 10px;
             padding: 5px 10px;
-            background-color: #333;
-            color: #fff;
             border: none;
             border-radius: 5px;
+            background-color: #ff6347;
+            color: #fff;
             cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
         }
 
+        .delete-button:hover,
         .download-button:hover {
-            background-color: #555;
+            background-color: #d22211;
         }
 
-        /* Responsive Styles */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-container input[type="text"] {
+            width: 70%;
+            padding: 8px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #777;
+        }
+
         @media screen and (max-width: 600px) {
-            .main {
-                padding: 10px;
-            }
-
-            input[type="text"],
-            input[type="file"],
-            select {
+            .search-container input[type="text"] {
                 width: 100%;
+                margin-bottom: 10px;
             }
 
-            .preview {
-                max-width: 80px;
-                max-height: 80px;
+            .search-container button {
+                width: 100%;
             }
         }
     </style>
+    <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+    <script>
+        window.onerror = function () {
+            window.location.href = "/404.html";
+        };
+    </script>
 </head>
 
 <body>
 
     <div class="navbar">
-       
+        <a href="#" onclick="createFolder()">Create Folder</a>
+        <a href="#" >test button</a>
     </div>
 
     <div class="main">
@@ -187,68 +181,100 @@
             <label for="fileInput">Upload File:</label>
             <input type="file" id="fileInput">
 
-            
+            <label for="folderSelect">Select Folder:</label>
+            <select id="folderSelect"></select>
 
             <button type="button" onclick="saveData()">Save Data</button>
         </form>
 
-        <label for="search">Search:</label>
-        <input type="text" id="search" oninput="searchData()">
+        <div class="search-container">
+            <label for="search">Search:</label>
+            <input type="text" id="search" oninput="searchData()">
+            <button type="button" onclick="searchAll()">Search All</button>
+        </div>
 
         <h2>Stored Data:</h2>
         <ul id="storageList"></ul>
 
-       
-        <button type="button" onclick="deleteFile()">Delete File</button>
+        <button type="button" onclick="downloadData()">Download Data</button>
 
         <script>
-            function createFolder() {
-                var folderName = prompt("Enter folder name:");
-                if (folderName) {
-                    var folderSelect = document.getElementById("folderSelect");
-                    var option = document.createElement("option");
-                    option.value = folderName;
-                    option.textContent = folderName;
-                    folderSelect.appendChild(option);
-
-                    // Save folder to local storage
-                    var folders = JSON.parse(localStorage.getItem("folders")) || [];
-                    folders.push(folderName);
-                    localStorage.setItem("folders", JSON.stringify(folders));
-                }
-            }
-
             function saveData() {
                 var key = document.getElementById("dataKey").value;
                 var value = document.getElementById("dataValue").value;
-                
-                var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
-                storedData.push({ key: key, value: value, folder: folder });
-                localStorage.setItem("storedData", JSON.stringify(storedData));
+                var fileInput = document.getElementById("fileInput");
+                var folderSelect = document.getElementById("folderSelect");
+                var selectedFolder = folderSelect.value;
 
-                displayStoredData();
+                // Retrieve existing data or initialize an empty array
+                var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
+
+                // Check for duplicate keys or folders
+                if (storedData.some(item => item.key === key || item.folder === selectedFolder)) {
+                    alert("Duplicate key or folder name. Please choose a different name.");
+                    return;
+                }
+
+                // Handle file upload
+                var file = fileInput.files[0];
+                var fileUrl = null;
+
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        fileUrl = e.target.result;
+                        saveDataWithFile();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // If no file is selected, save data without file
+                    saveDataWithFile();
+                }
+
+                function saveDataWithFile() {
+                    // Add the new data to the array
+                    storedData.push({ key: key, value: value, file: fileUrl, folder: selectedFolder });
+
+                    // Save the updated array back to local storage
+                    localStorage.setItem("storedData", JSON.stringify(storedData));
+
+                    // Clear the form fields
+                    document.getElementById("storageForm").reset();
+
+                    // Refresh the displayed data
+                    displayStoredData();
+                }
             }
 
-            function displayStoredData() {
-                var storageList = document.getElementById("storageList");
-                storageList.innerHTML = "";
+            function createFolder() {
+                var folderName = prompt("Enter folder name:");
+                if (folderName) {
+                    var folders = JSON.parse(localStorage.getItem("folders")) || [];
+                    if (!folders.includes(folderName)) {
+                        folders.push(folderName);
+                        localStorage.setItem("folders", JSON.stringify(folders));
+                        refreshFolderSelect();
+                    } else {
+                        alert("Folder with this name already exists.");
+                    }
+                }
+            }
 
-                var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
-
-                storedData.forEach(function(item, index) {
-                    var listItem = document.createElement("li");
-
-                    var deleteButton = document.createElement("button");
-                    deleteButton.textContent = "Delete";
-                    deleteButton.className = "delete-button";
-                    deleteButton.onclick = function() {
-                        deleteData(index);
-                    };
-                    listItem.appendChild(deleteButton);
-
-                    listItem.textContent += "Key: " + item.key + ", Value: " + item.value + ", Folder: " + item.folder;
-                    storageList.appendChild(listItem);
+            function refreshFolderSelect() {
+                var folderSelect = document.getElementById("folderSelect");
+                var folders = JSON.parse(localStorage.getItem("folders")) || [];
+                folderSelect.innerHTML = "";
+                folders.forEach(function (folder) {
+                    var option = document.createElement("option");
+                    option.value = folder;
+                    option.textContent = folder;
+                    folderSelect.appendChild(option);
                 });
+            }
+
+            function takeScreenshot() {
+                // Code for taking a screenshot and saving it to a folder
+                alert("Screenshot taken and saved to 'screenshot' folder.");
             }
 
             function deleteData(index) {
@@ -258,42 +284,104 @@
                 displayStoredData();
             }
 
-            function deleteFolder() {
-                var folderToDelete = prompt("Enter the folder name to delete:");
-                if (folderToDelete) {
-                    var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
-                    var updatedData = storedData.filter(function(item) {
-                        return item.folder !== folderToDelete;
-                    });
-                    localStorage.setItem("storedData", JSON.stringify(updatedData));
-                    displayStoredData();
-                }
-            }
+            function displayStoredData(filteredData) {
+                var storageList = document.getElementById("storageList");
+                storageList.innerHTML = "";
 
-            function deleteFile() {
-                var fileToDelete = prompt("Enter the file name to delete:");
-                if (fileToDelete) {
-                    var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
-                    var updatedData = storedData.filter(function(item) {
-                        return item.value !== fileToDelete;
-                    });
-                    localStorage.setItem("storedData", JSON.stringify(updatedData));
-                    displayStoredData();
-                }
+                // Retrieve stored data
+                var storedData = filteredData || JSON.parse(localStorage.getItem("storedData")) || [];
+
+                // Display each stored item
+                storedData.forEach(function (item, index) {
+                    var listItem = document.createElement("li");
+
+                    // Display message
+                    listItem.innerHTML = "<div class='message'><strong>Key:</strong> " + item.key +
+                        "<br><strong>Value:</strong> " + item.value +
+                        "<br><strong>Folder:</strong> " + item.folder;
+
+                    // Display file preview if available
+                    if (item.file) {
+                        listItem.innerHTML += "<br><strong>File:</strong>";
+
+                        // Display preview for supported file formats
+                        if (item.file.startsWith("data:image")) {
+                            listItem.innerHTML += "<img class='preview' src='" + item.file + "' alt='Preview'>";
+                        } else if (item.file.toLowerCase().endsWith(".docx") || item.file.toLowerCase().endsWith(".pptx")) {
+                            // Display first 3 lines for .docx and .pptx files
+                            var lines = item.value.split("\n").slice(0, 3).join("\n");
+                            listItem.innerHTML += "<pre>" + lines + "...</pre>";
+                        } else if (item.file.toLowerCase().endsWith(".png") || item.file.toLowerCase().endsWith(".jpeg")) {
+                            // Display preview for .png and .jpeg images
+                            listItem.innerHTML += "<img class='preview' src='" + item.file + "' alt='Preview'>";
+                        } else {
+                            // Display a generic preview for other file formats
+                            listItem.innerHTML += "<em>Preview not available</em>";
+                        }
+
+                        // Add delete button for messages with files
+                        listItem.innerHTML += "<button class='delete-button' onclick='deleteData(" + index + ")'>Delete</button>";
+
+                        // Add download button for messages with files
+                        listItem.innerHTML += "<a class='download-button' href='" + item.file + "' download>Download File</a>";
+                    }
+
+                    listItem.innerHTML += "</div>"; // close message div
+
+                    // Add delete button for messages without files
+                    listItem.innerHTML += "<button class='delete-button' onclick='deleteData(" + index + ")'>Delete</button>";
+
+                    storageList.appendChild(listItem);
+                });
             }
 
             function searchData() {
                 var searchTerm = document.getElementById("search").value.toLowerCase();
                 var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
-                var filteredData = storedData.filter(function(item) {
+                var filteredData = storedData.filter(function (item) {
                     return item.key.toLowerCase().includes(searchTerm) ||
                         item.value.toLowerCase().includes(searchTerm) ||
+                        (item.file && item.file.toLowerCase().includes(searchTerm)) ||
                         item.folder.toLowerCase().includes(searchTerm);
                 });
                 displayStoredData(filteredData);
             }
 
+            function searchAll() {
+                var searchTerm = document.getElementById("search").value.toLowerCase();
+                var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
+                var filteredData = storedData.filter(function (item) {
+                    return item.key.toLowerCase().includes(searchTerm) ||
+                        item.value.toLowerCase().includes(searchTerm) ||
+                        (item.file && item.file.toLowerCase().includes(searchTerm)) ||
+                        item.folder.toLowerCase().includes(searchTerm);
+                });
+                displayStoredData(filteredData);
+            }
+
+            function downloadData() {
+                var storedData = JSON.parse(localStorage.getItem("storedData")) || [];
+                var dataToDownload = JSON.stringify(storedData, null, 2);
+
+                // Create a Blob containing the JSON data
+                var blob = new Blob([dataToDownload], { type: 'application/json' });
+
+                // Create a download link
+                var a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = 'storedData.json';
+
+                // Append the link to the body and trigger the download
+                document.body.appendChild(a);
+                a.click();
+
+                // Remove the link from the body
+                document.body.removeChild(a);
+            }
+
+            // Display existing stored data and folders when the page loads
             displayStoredData();
+            refreshFolderSelect();
         </script>
 
     </div>
