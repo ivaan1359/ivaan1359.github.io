@@ -20,7 +20,7 @@
     color: green;
   }
   .black-text {
-    color: blue;
+    color: black;
   }
   .container {
     max-width: 800px;
@@ -39,6 +39,10 @@
   }
   .button:hover {
     background-color: #0056b3;
+  }
+  .folder {
+    cursor: pointer;
+    text-decoration: underline;
   }
 </style>
 </head>
@@ -113,7 +117,10 @@
   function openFolder(folderName) {
     let screenshots = JSON.parse(localStorage.getItem(folderName)) || [];
     if (screenshots.length > 0) {
-      alert(`Folder "${folderName}" contains screenshots:\n${screenshots.join('\n')}`);
+      let screenshotList = screenshots.map(function(screenshot) {
+        return `<li><a href="${screenshot}" download>${screenshot}</a></li>`;
+      }).join('');
+      alert(`Folder "${folderName}" contains screenshots:\n<ul>${screenshotList}</ul>`);
     } else {
       alert(`Folder "${folderName}" is empty`);
     }
