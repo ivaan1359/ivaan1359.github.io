@@ -20,7 +20,7 @@
     color: green;
   }
   .black-text {
-    color: black;
+    color: blue;
   }
   .container {
     max-width: 800px;
@@ -56,28 +56,81 @@
   <ul id="foldersList"></ul>
 </div>
 <script>
+  // Load folders from localStorage on page load
+  window.onload = function() {
+    loadFolders();
+  };
+
   function takeScreenshot() {
-    // Dummy function for demonstration
     let timestamp = new Date().toISOString().replace(/[^\w]/g, '');
     let screenshotName = 'screenshot_' + timestamp + '.png';
     let folder = 'Screenshots';
+    saveScreenshot(folder, screenshotName);
     addToFolderList(folder);
     alert(`Screenshot "${screenshotName}" saved to folder "${folder}"`);
+  }
+
+  function saveScreenshot(folder, screenshotName) {
+    let screenshots = JSON.parse(localStorage.getItem(folder)) || [];
+    screenshots.push(screenshotName);
+    localStorage.setItem(folder, JSON.stringify(screenshots));
   }
 
   function createFolder() {
     let folderName = prompt('Enter folder name:');
     if (folderName) {
+      saveFolder(folderName);
       addToFolderList(folderName);
       alert(`Folder "${folderName}" created`);
     }
+  }
+
+  function saveFolder(folderName) {
+    let folders = JSON.parse(localStorage.getItem('folders')) || [];
+    folders.push(folderName);
+    localStorage.setItem('folders', JSON.stringify(folders));
+  }
+
+  function loadFolders() {
+    let folders = JSON.parse(localStorage.getItem('folders')) || [];
+    let foldersList = document.getElementById('foldersList');
+    folders.forEach(function(folder) {
+      addToFolderList(folder);
+    });
   }
 
   function addToFolderList(folderName) {
     let foldersList = document.getElementById('foldersList');
     let li = document.createElement('li');
     li.textContent = folderName;
+    li.addEventListener('click', function() {
+      openFolder(folderName);
+    });
+    li.classList.add('folder');
     foldersList.appendChild(li);
+  }
+
+  function openFolder(folderName) {
+    let screenshots = JSON.parse(localStorage.getItem(folderName)) || [];
+    if (screenshots.length > 0) {
+      alert(`Folder "${folderName}" contains screenshots:\n${screenshots.join('\n')}`);
+    } else {
+      alert(`Folder "${folderName}" is empty`);
+    }
+  }
+
+  function deleteFolder(folderName) {
+    if (confirm(`Are you sure you want to delete folder "${folderName}"?`)) {
+      localStorage.removeItem(folderName);
+      let folders = JSON.parse(localStorage.getItem('folders')) || [];
+      let index = folders.indexOf(folderName);
+      if (index !== -1) {
+        folders.splice(index, 1);
+        localStorage.setItem('folders', JSON.stringify(folders));
+      }
+      loadFolders();
+      alert(`Folder "${folderName}" deleted`);
+    }
   }
 </script>
 </body>
