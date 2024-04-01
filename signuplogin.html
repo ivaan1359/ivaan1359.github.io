@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GameStorage - Sign Up / Log In</title>
-  <style>
-    body {
+ <styles>
+   body {
   font-family: Arial, sans-serif;
 }
 
@@ -46,7 +46,7 @@ button:hover {
   background-color: #555;
 }
 
-  </style>
+ </styles>
 </head>
 <body>
   <div class="container">
@@ -65,6 +65,44 @@ button:hover {
     </form>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const signupForm = document.getElementById('signupForm');
+  const loginForm = document.getElementById('loginForm');
+
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    
+    // Check if user already exists in local storage
+    if (localStorage.getItem(email)) {
+      alert('User already exists. Please log in.');
+      return;
+    }
+
+    // Store user in local storage (not secure for real applications)
+    localStorage.setItem(email, JSON.stringify({ email, password }));
+    alert('Sign up successful! Please log in.');
+    signupForm.reset();
+  });
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // Check if user exists in local storage and validate password
+    const user = JSON.parse(localStorage.getItem(email));
+    if (user && user.password === password) {
+      alert('Login successful!');
+      loginForm.reset();
+    } else {
+      alert('Invalid email or password.');
+    }
+  });
+});
+
+  </script>
 </body>
 </html>
