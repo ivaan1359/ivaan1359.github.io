@@ -1,73 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameStorage</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameStorage</title>
+  <style>
+    /* Reset default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    /* Main styles */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #555;
+    }
+
+    /* Features section styles */
+    .features {
+      margin-bottom: 40px;
+    }
+
+    .feature {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 16px;
+    }
+
+    /* Testimonials section styles */
+    .testimonials {
+      margin-bottom: 40px;
+    }
+
+    .testimonial {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .testimonial p {
+      font-size: 16px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .testimonial cite {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Footer styles */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #333;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <h1>GameStorage</h1>
-  <p>Your Cloud Storage Solution for Gamers</p>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="signup.html">Sign Up</a></li>
-    <li><a href="login.html">Log In</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section id="intro">
-    <h2>Welcome to GameStorage!</h2>
-    <p>Store your game saves, screenshots, and more securely in the cloud.</p>
-  </section>
-
-  <section id="why-choose">
-    <h2>Why Choose GameStorage?</h2>
-    <ol>
-      <li><strong>Secure & Reliable:</strong> Your data is encrypted and stored securely.</li>
-      <li><strong>Automatic Backups:</strong> Never lose your progress again with automatic backups.</li>
-      <li><strong>Cross-Platform Compatibility:</strong> Access your data from any device.</li>
-      <li><strong>Easy to Use:</strong> Our intuitive interface makes managing storage effortless.</li>
-    </ol>
-  </section>
-
-  <section id="pricing">
-    <h2>Pricing Plans</h2>
-    <ul>
-      <li><strong>Basic:</strong> 5GB Storage - Free Forever</li>
-      <li><strong>Standard:</strong> 25GB Storage - $4.99/month</li>
-      <li><strong>Premium:</strong> 100GB Storage - $9.99/month</li>
-    </ul>
-    <a href="signup.html" class="cta-btn">Sign Up Now</a>
-  </section>
-
-  <section id="testimonials">
-    <h2>Testimonials</h2>
-    <blockquote>
-      <p>"GameStorage has been a lifesaver for me. I never have to worry about losing my progress again!"</p>
-      <footer>- Mark W.</footer>
-    </blockquote>
-    <blockquote>
-      <p>"The cross-platform compatibility is fantastic. I can seamlessly switch between my PC and console without any hassle."</p>
-      <footer>- Sarah L.</footer>
-    </blockquote>
-  </section>
-</main>
-
-<footer>
-  <p>Have questions or need support? Contact us at <a href="mailto:support@gamestorage.com">support@gamestorage.com</a></p>
-  <nav>
-    <a href="https://www.facebook.com/gamestorage" target="_blank">Facebook</a>
-    <a href="https://twitter.com/gamestorage" target="_blank">Twitter</a>
-    <a href="https://www.instagram.com/gamestorage" target="_blank">Instagram</a>
-  </nav>
-  <p>&copy; 2024 GameStorage. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-</footer>
-
+  <header>
+    <h1>GameStorage</h1>
+    <p>Your Cloud Storage Solution for Gamers</p>
+  </header>
+  <div class="container">
+    <section class="hero">
+      <h2>Welcome to GameStorage!</h2>
+      <p>Store your game saves, screenshots, files, and more securely in the cloud.</p>
+      <a href="#" class="btn">Sign Up</a>
+      <a href="#" class="btn">Log In</a>
+    </section>
+    <section class="features">
+      <div class="feature">
+        <h2>Secure & Reliable</h2>
+        <p>Your data is encrypted and stored securely in our state-of-the-art data centers.</p>
+      </div>
+      <div class="feature">
+        <h2>Automatic Backups</h2>
+        <p>Never lose your progress again with automatic game save backups.</p>
+      </div>
+      <div class="feature">
+        <h2>Cross-Platform Compatibility</h2>
+        <p>Access your game data from any device, anytime, anywhere.</p>
+      </div>
+      <div class="feature">
+        <h2>Easy to Use</h2>
+        <p>Our intuitive interface makes managing your game storage effortless.</p>
+      </div>
+    </section>
+    <section class="testimonials">
+      <div class="testimonial">
+        <p>"GameStorage has been a lifesaver for me. I never have to worry about losing my progress again!"</p>
+        <cite>Mark W.</cite>
+      </div>
+      <div class="testimonial">
+        <p>"The cross-platform compatibility is fantastic. I can seamlessly switch between my PC and console without any hassle."</p>
+        <cite>Sarah L.</cite>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>Have questions or need support? Contact us at <a href="mailto:support@gamestorage.com">support@gamestorage.com</a></p>
+    <p>Follow us on social media for updates and promotions:</p>
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#">Instagram</a>
+    <p>© 2024 GameStorage. All rights reserved.</p>
+  </footer>
 </body>
 </html>
