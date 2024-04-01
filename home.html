@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Storage</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  .green-text {
+    color: green;
+  }
+  .black-text {
+    color: black;
+  }
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<div class="navbar">
+  <span class="green-text">Game</span> <span class="black-text">Storage</span>
+</div>
+<div class="container">
+  <h1>Welcome to Game Storage</h1>
+  <p>Take a screenshot or upload a file:</p>
+  <button class="button" onclick="takeScreenshot()">Take Screenshot</button>
+  <input type="file" id="fileInput" style="display: none;">
+  <label for="fileInput" class="button">Upload File</label>
+</div>
+<script>
+  function takeScreenshot() {
+    // Implement screenshot functionality here
+    alert('Screenshot taken!');
+  }
+</script>
+</body>
+</html>
 
