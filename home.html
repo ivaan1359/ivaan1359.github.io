@@ -52,13 +52,33 @@
   <button class="button" onclick="takeScreenshot()">Take Screenshot</button>
   <input type="file" id="fileInput" style="display: none;">
   <label for="fileInput" class="button">Upload File</label>
+  <button class="button" onclick="createFolder()">Create Folder</button>
+  <ul id="foldersList"></ul>
 </div>
 <script>
   function takeScreenshot() {
-    // Implement screenshot functionality here
-    alert('Screenshot taken!');
+    // Dummy function for demonstration
+    let timestamp = new Date().toISOString().replace(/[^\w]/g, '');
+    let screenshotName = 'screenshot_' + timestamp + '.png';
+    let folder = 'Screenshots';
+    addToFolderList(folder);
+    alert(`Screenshot "${screenshotName}" saved to folder "${folder}"`);
+  }
+
+  function createFolder() {
+    let folderName = prompt('Enter folder name:');
+    if (folderName) {
+      addToFolderList(folderName);
+      alert(`Folder "${folderName}" created`);
+    }
+  }
+
+  function addToFolderList(folderName) {
+    let foldersList = document.getElementById('foldersList');
+    let li = document.createElement('li');
+    li.textContent = folderName;
+    foldersList.appendChild(li);
   }
 </script>
 </body>
 </html>
-
