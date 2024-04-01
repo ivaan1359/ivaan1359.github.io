@@ -11,17 +11,28 @@
             margin: 0;
             padding: 0;
         }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         header {
             background-color: #343a40;
             color: #ffffff;
             padding: 10px 0;
             text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
         nav {
             background-color: #007bff;
             color: #ffffff;
             padding: 10px 0;
             text-align: center;
+            border-radius: 10px;
         }
         nav a {
             color: #ffffff;
@@ -31,46 +42,56 @@
         main {
             padding: 20px;
         }
+        section {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
         footer {
             background-color: #343a40;
             color: #ffffff;
             text-align: center;
             padding: 10px 0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Storage Services</h1>
-    </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Welcome to our storage services website. We provide secure and affordable storage solutions for your belongings.</p>
-        </section>
-        <section id="services">
-            <h2>Our Services</h2>
-            <ul>
-                <li>Secure Storage Units</li>
-                <li>Climate-Controlled Units</li>
-                <li>24/7 Access</li>
-                <li>Flexible Rental Terms</li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or would like to inquire about our services, please contact us at:</p>
-            <p>Email: info@storageservices.com</p>
-            <p>Phone: 123-456-7890</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Storage Services. All rights reserved.</p>
-    </footer>
+    <div class="container">
+        <header>
+            <h1>Storage Services</h1>
+        </header>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <main>
+            <section id="about">
+                <h2>About Us</h2>
+                <p>Welcome to our storage services website. We provide secure and affordable storage solutions for your belongings.</p>
+            </section>
+            <section id="services">
+                <h2>Our Services</h2>
+                <ul>
+                    <li>Secure Storage Units</li>
+                    <li>Climate-Controlled Units</li>
+                    <li>24/7 Access</li>
+                    <li>Flexible Rental Terms</li>
+                </ul>
+            </section>
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or would like to inquire about our services, please contact us at:</p>
+                <p>Email: info@storageservices.com</p>
+                <p>Phone: 123-456-7890</p>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Storage Services. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
