@@ -1,62 +1,32 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Sign In With Google</title>
-    <meta
-      name="google-signin-client_id"
-      content="YOUR_CLIENT_ID.apps.googleusercontent.com"
-    />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Google</title>
+</head>
+<body>
+    <h1>Login with Google</h1>
+    <button onclick="handleLogin()">Login with Google</button>
+
+    <!-- Google OAuth script -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <style>
-      body {
-        font-family: 'Helvetica', 'Arial', sans-serif;
-      }
-      h1 {
-        margin-bottom: 1em;
-      }
-      h2 {
-        font-weight: normal;
-      }
-      ul {
-        list-style-type: none;
-        display: flex;
-        padding: 0;
-      }
-      li {
-        margin-right: 1em;
-      }
-      a {
-        color: #4285f4;
-      }
-      .button {
-        display: inline-block;
-        padding: 10px 12px;
-        margin: 0;
-        font-size: 14px;
-        line-height: 1.3333333;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        border: 1px solid #4285f4;
-        cursor: pointer;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background-color: #4285f4;
-        border-radius: 3px;
-      }
-      .button:hover {
-        background-color: #3367d6;
-      }
-      .button:active {
-        background-color: #1a4aaf;
-      }
-      .button:focus {
-        outline: 0;
-        box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.3);
-      }
-      .button:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-      }
+    <script>
+        function handleLogin() {
+            gapi.auth2.getAuthInstance().signIn().then(user => {
+                console.log('Logged in user:', user);
+                // Send user data to your server for further processing (e.g., authentication)
+            }).catch(error => {
+                console.error('Login error:', error);
+            });
+        }
+
+        function handleSignOut() {
+            gapi.auth2.getAuthInstance().signOut().then(() => {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+</body>
+</html>
